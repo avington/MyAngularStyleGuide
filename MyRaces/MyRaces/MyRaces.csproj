@@ -1,0 +1,966 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{33D8F334-AE41-4FF6-94A3-A4F4969F77D6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyRaces</RootNamespace>
+    <AssemblyName>MyRaces</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44303</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TypeScriptToolsVersion>1.5</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\Api\AccountController.cs" />
+    <Compile Include="Controllers\Api\DashboardController.cs" />
+    <Compile Include="Controllers\Api\RacesController.cs" />
+    <Compile Include="Controllers\Web\HomeController.cs" />
+    <Compile Include="Controllers\Api\ValuesController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountBindingModels.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Content.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Race.cs" />
+    <Compile Include="Models\RaceLenthType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="build\index.html" />
+    <Content Include="build\styles\app-dc5841bce3.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="gulpfile.js" />
+    <Content Include="src\app\app.module.js" />
+    <Content Include="src\app\blocks\exception\exception-handler.provider.js" />
+    <Content Include="src\app\blocks\exception\exception-handler.provider.spec.js" />
+    <Content Include="src\app\blocks\exception\exception.module.js" />
+    <Content Include="src\app\blocks\exception\exception.service.js" />
+    <Content Include="src\app\blocks\logger\logger.module.js" />
+    <Content Include="src\app\blocks\logger\logger.service.js" />
+    <Content Include="src\app\blocks\router\router.module.js" />
+    <Content Include="src\app\blocks\router\router.provider.js" />
+    <Content Include="src\app\core\core.module.js" />
+    <Content Include="src\app\core\directives\menu.directive.js" />
+    <Content Include="src\app\core\services\api.service.js" />
+    <Content Include="src\app\core\services\api.service.spec.js" />
+    <Content Include="src\app\core\templates\cmcMainNav.html" />
+    <Content Include="src\app\external\external.constants.js" />
+    <Content Include="src\app\external\external.module.js" />
+    <Content Include="src\app\home\controllers\home.controller.js" />
+    <Content Include="src\app\home\home.module.js" />
+    <Content Include="src\app\home\home.routes.js" />
+    <Content Include="src\app\home\templates\home.html" />
+    <Content Include="src\specs.html" />
+    <Content Include="src\templates\cmcMainNav.html" />
+    <Content Include="src\less\app.css" />
+    <Content Include="src\index.html" />
+    <Content Include="src\less\app.less" />
+    <Content Include="src\test-helpers\bind-polyfill.js" />
+    <Content Include="vendor\alertifyjs\.bower.json" />
+    <Content Include="vendor\alertifyjs\.jshintrc" />
+    <Content Include="vendor\alertifyjs\bower.json" />
+    <Content Include="vendor\alertifyjs\dist\js\alertify.js.map" />
+    <Content Include="vendor\alertifyjs\README.md" />
+    <Content Include="vendor\alertifyjs\src\.jshintrc" />
+    <Content Include="vendor\alertifyjs\src\sass\core.scss" />
+    <Content Include="vendor\alertifyjs\src\sass\themes\bootstrap3\bootstrap.scss" />
+    <Content Include="vendor\alertifyjs\src\sass\themes\bootstrap\bootstrap.scss" />
+    <Content Include="vendor\alertifyjs\src\sass\themes\default\default.scss" />
+    <Content Include="vendor\alertifyjs\update.json" />
+    <None Include="vendor\amplify\lib\amplify-vsdoc.js" />
+    <Content Include="src\styles\app.css" />
+    <Content Include="src\styles\bootstrap.css" />
+    <Content Include="vendor\alertifyjs\dist\css\alertify-bootstrap-3.css" />
+    <Content Include="vendor\alertifyjs\dist\css\alertify-bootstrap.css" />
+    <Content Include="vendor\alertifyjs\dist\css\alertify.css" />
+    <Content Include="vendor\alertifyjs\dist\js\alertify.js" />
+    <Content Include="vendor\alertifyjs\src\css\core.css" />
+    <Content Include="vendor\alertifyjs\src\css\themes\bootstrap3\bootstrap.css" />
+    <Content Include="vendor\alertifyjs\src\css\themes\bootstrap\bootstrap.css" />
+    <Content Include="vendor\alertifyjs\src\css\themes\default\default.css" />
+    <Content Include="vendor\alertifyjs\src\js\alertify.js" />
+    <Content Include="vendor\amplify\lib\amplify.core.js" />
+    <Content Include="vendor\amplify\lib\amplify.core.min.js" />
+    <Content Include="vendor\amplify\lib\amplify.js" />
+    <Content Include="vendor\amplify\lib\amplify.min.js" />
+    <Content Include="vendor\amplify\lib\amplify.request.js" />
+    <Content Include="vendor\amplify\lib\amplify.request.min.js" />
+    <Content Include="vendor\amplify\lib\amplify.store.js" />
+    <Content Include="vendor\amplify\lib\amplify.store.min.js" />
+    <Content Include="vendor\angular-animate\angular-animate.js" />
+    <Content Include="vendor\angular-animate\angular-animate.min.js" />
+    <Content Include="vendor\angular-animate\index.js" />
+    <Content Include="vendor\angular-aria\angular-aria.js" />
+    <Content Include="vendor\angular-aria\angular-aria.min.js" />
+    <Content Include="vendor\angular-aria\index.js" />
+    <Content Include="vendor\angular-bootstrap\ui-bootstrap-csp.css" />
+    <Content Include="vendor\angular-bootstrap\ui-bootstrap-tpls.js" />
+    <Content Include="vendor\angular-bootstrap\ui-bootstrap-tpls.min.js" />
+    <Content Include="vendor\angular-bootstrap\ui-bootstrap.js" />
+    <Content Include="vendor\angular-bootstrap\ui-bootstrap.min.js" />
+    <Content Include="vendor\angular-cookies\angular-cookies.js" />
+    <Content Include="vendor\angular-cookies\angular-cookies.min.js" />
+    <Content Include="vendor\angular-cookies\index.js" />
+    <Content Include="vendor\angular-messages\angular-messages.js" />
+    <Content Include="vendor\angular-messages\angular-messages.min.js" />
+    <Content Include="vendor\angular-messages\index.js" />
+    <Content Include="vendor\angular-mocks\angular-mocks.js" />
+    <Content Include="vendor\angular-mocks\ngAnimateMock.js" />
+    <Content Include="vendor\angular-mocks\ngMock.js" />
+    <Content Include="vendor\angular-mocks\ngMockE2E.js" />
+    <Content Include="vendor\angular-sanitize\angular-sanitize.js" />
+    <Content Include="vendor\angular-sanitize\angular-sanitize.min.js" />
+    <Content Include="vendor\angular-sanitize\index.js" />
+    <Content Include="vendor\angular-spinner\.gitignore" />
+    <Content Include="vendor\angular-spinner\angular-spinner.js" />
+    <Content Include="vendor\angular-spinner\angular-spinner.min.js" />
+    <Content Include="vendor\angular-spinner\Gruntfile.js" />
+    <Content Include="vendor\angular-spinner\karma.conf.js" />
+    <Content Include="vendor\angular-spinner\tests.js" />
+    <Content Include="vendor\angular-touch\angular-touch.js" />
+    <Content Include="vendor\angular-touch\angular-touch.min.js" />
+    <Content Include="vendor\angular-touch\index.js" />
+    <Content Include="vendor\angular-ui-router\release\angular-ui-router.js" />
+    <Content Include="vendor\angular-ui-router\release\angular-ui-router.min.js" />
+    <Content Include="vendor\angular-ui-router\src\common.js" />
+    <Content Include="vendor\angular-ui-router\src\resolve.js" />
+    <Content Include="vendor\angular-ui-router\src\state.js" />
+    <Content Include="vendor\angular-ui-router\src\stateDirectives.js" />
+    <Content Include="vendor\angular-ui-router\src\stateFilters.js" />
+    <Content Include="vendor\angular-ui-router\src\templateFactory.js" />
+    <Content Include="vendor\angular-ui-router\src\urlMatcherFactory.js" />
+    <Content Include="vendor\angular-ui-router\src\urlRouter.js" />
+    <Content Include="vendor\angular-ui-router\src\view.js" />
+    <Content Include="vendor\angular-ui-router\src\viewDirective.js" />
+    <Content Include="vendor\angular-ui-router\src\viewScroll.js" />
+    <Content Include="vendor\angular-ui\.gitignore" />
+    <Content Include="vendor\angular-ui\build\angular-ui-ieshiv.js" />
+    <Content Include="vendor\angular-ui\build\angular-ui-ieshiv.min.js" />
+    <Content Include="vendor\angular-ui\build\angular-ui.css" />
+    <Content Include="vendor\angular-ui\build\angular-ui.js" />
+    <Content Include="vendor\angular-ui\build\angular-ui.min.css" />
+    <Content Include="vendor\angular-ui\build\angular-ui.min.js" />
+    <Content Include="vendor\angular-ui\common\ieshiv\ieshiv.js" />
+    <Content Include="vendor\angular-ui\common\module.js" />
+    <Content Include="vendor\angular-ui\grunt.js" />
+    <Content Include="vendor\angular-ui\modules\directives\animate\animate.js" />
+    <Content Include="vendor\angular-ui\modules\directives\animate\test\animateSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\calendar\calendar.js" />
+    <Content Include="vendor\angular-ui\modules\directives\calendar\test\calendarSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\codemirror\codemirror.js" />
+    <Content Include="vendor\angular-ui\modules\directives\codemirror\test\codemirrorSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\currency\currency.js" />
+    <Content Include="vendor\angular-ui\modules\directives\currency\test\currencySpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\date\date.js" />
+    <Content Include="vendor\angular-ui\modules\directives\date\test\dateSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\event\event.js" />
+    <Content Include="vendor\angular-ui\modules\directives\event\test\eventSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\if\if.js" />
+    <Content Include="vendor\angular-ui\modules\directives\if\test\ifSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\jq\jq.js" />
+    <Content Include="vendor\angular-ui\modules\directives\jq\test\jqSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\keypress\keypress.js" />
+    <Content Include="vendor\angular-ui\modules\directives\keypress\test\keydownSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\keypress\test\keypressSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\keypress\test\keyupSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\map\map.js" />
+    <Content Include="vendor\angular-ui\modules\directives\map\test\mapSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\mask\mask.js" />
+    <Content Include="vendor\angular-ui\modules\directives\mask\test\maskSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\reset\reset.js" />
+    <Content Include="vendor\angular-ui\modules\directives\reset\test\resetSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\route\route.js" />
+    <Content Include="vendor\angular-ui\modules\directives\route\test\routeSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\scrollfix\scrollfix.js" />
+    <Content Include="vendor\angular-ui\modules\directives\scrollfix\test\scrollfixSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\select2\select2.js" />
+    <Content Include="vendor\angular-ui\modules\directives\select2\test\select2Spec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\showhide\showhide.js" />
+    <Content Include="vendor\angular-ui\modules\directives\showhide\test\showhideSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\sortable\sortable.js" />
+    <Content Include="vendor\angular-ui\modules\directives\sortable\test\sortableSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\tinymce\test\tinymceSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\tinymce\tinymce.js" />
+    <Content Include="vendor\angular-ui\modules\directives\validate\test\validateSpec.js" />
+    <Content Include="vendor\angular-ui\modules\directives\validate\validate.js" />
+    <Content Include="vendor\angular-ui\modules\filters\format\format.js" />
+    <Content Include="vendor\angular-ui\modules\filters\format\test\formatSpec.js" />
+    <Content Include="vendor\angular-ui\modules\filters\highlight\highlight.js" />
+    <Content Include="vendor\angular-ui\modules\filters\highlight\test\highlightSpec.js" />
+    <Content Include="vendor\angular-ui\modules\filters\inflector\inflector.js" />
+    <Content Include="vendor\angular-ui\modules\filters\inflector\test\inflectorSpec.js" />
+    <Content Include="vendor\angular-ui\modules\filters\unique\test\uniqueSpec.js" />
+    <Content Include="vendor\angular-ui\modules\filters\unique\unique.js" />
+    <Content Include="vendor\angular-ui\templates\template.js" />
+    <Content Include="vendor\angular-ui\templates\test\templateSpec.js" />
+    <Content Include="vendor\angular-ui\test\lib\angular-1.0.1\angular-mocks.js" />
+    <Content Include="vendor\angular-ui\test\lib\angular-1.0.1\angular.js" />
+    <Content Include="vendor\angular-ui\test\lib\angular\angular-1.0.0rc4.js" />
+    <Content Include="vendor\angular-ui\test\lib\angular\angular-1.0.0rc5.js" />
+    <Content Include="vendor\angular-ui\test\lib\angular\angular-mocks.js" />
+    <Content Include="vendor\angular-ui\test\lib\bootstrap\bootstrap-modal.js" />
+    <Content Include="vendor\angular-ui\test\lib\codemirror\codemirror.js" />
+    <Content Include="vendor\angular-ui\test\lib\googlemaps\googlemaps.js" />
+    <Content Include="vendor\angular-ui\test\lib\jquery\jquery-1.7.2.js" />
+    <Content Include="vendor\angular-ui\test\lib\jquery\jquery-ui-1.8.18.js" />
+    <Content Include="vendor\angular-ui\test\lib\maskedinput\jquery.maskedinput-1.3.js" />
+    <Content Include="vendor\angular-ui\test\lib\select2\select2.js" />
+    <Content Include="vendor\angular-ui\test\lib\tinymce\jquery.tinymce.js" />
+    <Content Include="vendor\angular-ui\test\lib\tinymce\tiny_mce.js" />
+    <Content Include="vendor\angular-ui\test\test-config.js" />
+    <Content Include="vendor\angular\angular-csp.css" />
+    <Content Include="vendor\angular\angular.js" />
+    <Content Include="vendor\angular\angular.min.js" />
+    <Content Include="vendor\angular\index.js" />
+    <Content Include="vendor\bardjs\dist\bard-ngRouteTester.js" />
+    <Content Include="vendor\bardjs\dist\bard.js" />
+    <Content Include="vendor\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="vendor\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <Content Include="vendor\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="vendor\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="vendor\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="vendor\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="vendor\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="vendor\bootstrap\dist\js\npm.js" />
+    <Content Include="vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="vendor\bootstrap\Gruntfile.js" />
+    <Content Include="vendor\bootstrap\grunt\bs-commonjs-generator.js" />
+    <Content Include="vendor\bootstrap\grunt\bs-glyphicons-data-generator.js" />
+    <Content Include="vendor\bootstrap\grunt\bs-lessdoc-parser.js" />
+    <Content Include="vendor\bootstrap\grunt\bs-raw-files-generator.js" />
+    <Content Include="vendor\bootstrap\js\affix.js" />
+    <Content Include="vendor\bootstrap\js\alert.js" />
+    <Content Include="vendor\bootstrap\js\button.js" />
+    <Content Include="vendor\bootstrap\js\carousel.js" />
+    <Content Include="vendor\bootstrap\js\collapse.js" />
+    <Content Include="vendor\bootstrap\js\dropdown.js" />
+    <Content Include="vendor\bootstrap\js\modal.js" />
+    <Content Include="vendor\bootstrap\js\popover.js" />
+    <Content Include="vendor\bootstrap\js\scrollspy.js" />
+    <Content Include="vendor\bootstrap\js\tab.js" />
+    <Content Include="vendor\bootstrap\js\tooltip.js" />
+    <Content Include="vendor\bootstrap\js\transition.js" />
+    <Content Include="vendor\bootstrap\package.js" />
+    <Content Include="vendor\fontawesome\.gitignore" />
+    <Content Include="vendor\fontawesome\css\font-awesome.css" />
+    <Content Include="vendor\fontawesome\css\font-awesome.min.css" />
+    <Content Include="vendor\fontawesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="vendor\jquery\dist\jquery.js" />
+    <Content Include="vendor\jquery\dist\jquery.min.js" />
+    <Content Include="vendor\jquery\MIT-LICENSE.txt" />
+    <Content Include="vendor\jquery\src\ajax.js" />
+    <Content Include="vendor\jquery\src\ajax\jsonp.js" />
+    <Content Include="vendor\jquery\src\ajax\load.js" />
+    <Content Include="vendor\jquery\src\ajax\parseJSON.js" />
+    <Content Include="vendor\jquery\src\ajax\parseXML.js" />
+    <Content Include="vendor\jquery\src\ajax\script.js" />
+    <Content Include="vendor\jquery\src\ajax\var\nonce.js" />
+    <Content Include="vendor\jquery\src\ajax\var\rquery.js" />
+    <Content Include="vendor\jquery\src\ajax\xhr.js" />
+    <Content Include="vendor\jquery\src\attributes.js" />
+    <Content Include="vendor\jquery\src\attributes\attr.js" />
+    <Content Include="vendor\jquery\src\attributes\classes.js" />
+    <Content Include="vendor\jquery\src\attributes\prop.js" />
+    <Content Include="vendor\jquery\src\attributes\support.js" />
+    <Content Include="vendor\jquery\src\attributes\val.js" />
+    <Content Include="vendor\jquery\src\callbacks.js" />
+    <Content Include="vendor\jquery\src\core.js" />
+    <Content Include="vendor\jquery\src\core\access.js" />
+    <Content Include="vendor\jquery\src\core\init.js" />
+    <Content Include="vendor\jquery\src\core\parseHTML.js" />
+    <Content Include="vendor\jquery\src\core\ready.js" />
+    <Content Include="vendor\jquery\src\core\var\rsingleTag.js" />
+    <Content Include="vendor\jquery\src\css.js" />
+    <Content Include="vendor\jquery\src\css\addGetHookIf.js" />
+    <Content Include="vendor\jquery\src\css\curCSS.js" />
+    <Content Include="vendor\jquery\src\css\defaultDisplay.js" />
+    <Content Include="vendor\jquery\src\css\hiddenVisibleSelectors.js" />
+    <Content Include="vendor\jquery\src\css\support.js" />
+    <Content Include="vendor\jquery\src\css\swap.js" />
+    <Content Include="vendor\jquery\src\css\var\cssExpand.js" />
+    <Content Include="vendor\jquery\src\css\var\getStyles.js" />
+    <Content Include="vendor\jquery\src\css\var\isHidden.js" />
+    <Content Include="vendor\jquery\src\css\var\rmargin.js" />
+    <Content Include="vendor\jquery\src\css\var\rnumnonpx.js" />
+    <Content Include="vendor\jquery\src\data.js" />
+    <Content Include="vendor\jquery\src\data\accepts.js" />
+    <Content Include="vendor\jquery\src\data\Data.js" />
+    <Content Include="vendor\jquery\src\data\var\data_priv.js" />
+    <Content Include="vendor\jquery\src\data\var\data_user.js" />
+    <Content Include="vendor\jquery\src\deferred.js" />
+    <Content Include="vendor\jquery\src\deprecated.js" />
+    <Content Include="vendor\jquery\src\dimensions.js" />
+    <Content Include="vendor\jquery\src\effects.js" />
+    <Content Include="vendor\jquery\src\effects\animatedSelector.js" />
+    <Content Include="vendor\jquery\src\effects\Tween.js" />
+    <Content Include="vendor\jquery\src\event.js" />
+    <Content Include="vendor\jquery\src\event\ajax.js" />
+    <Content Include="vendor\jquery\src\event\alias.js" />
+    <Content Include="vendor\jquery\src\event\support.js" />
+    <Content Include="vendor\jquery\src\exports\amd.js" />
+    <Content Include="vendor\jquery\src\exports\global.js" />
+    <Content Include="vendor\jquery\src\intro.js" />
+    <Content Include="vendor\jquery\src\jquery.js" />
+    <Content Include="vendor\jquery\src\manipulation.js" />
+    <Content Include="vendor\jquery\src\manipulation\support.js" />
+    <Content Include="vendor\jquery\src\manipulation\var\rcheckableType.js" />
+    <Content Include="vendor\jquery\src\manipulation\_evalUrl.js" />
+    <Content Include="vendor\jquery\src\offset.js" />
+    <Content Include="vendor\jquery\src\outro.js" />
+    <Content Include="vendor\jquery\src\queue.js" />
+    <Content Include="vendor\jquery\src\queue\delay.js" />
+    <Content Include="vendor\jquery\src\selector-native.js" />
+    <Content Include="vendor\jquery\src\selector-sizzle.js" />
+    <Content Include="vendor\jquery\src\selector.js" />
+    <Content Include="vendor\jquery\src\serialize.js" />
+    <Content Include="vendor\jquery\src\sizzle\dist\sizzle.js" />
+    <Content Include="vendor\jquery\src\sizzle\dist\sizzle.min.js" />
+    <Content Include="vendor\jquery\src\traversing.js" />
+    <Content Include="vendor\jquery\src\traversing\findFilter.js" />
+    <Content Include="vendor\jquery\src\traversing\var\rneedsContext.js" />
+    <Content Include="vendor\jquery\src\var\arr.js" />
+    <Content Include="vendor\jquery\src\var\class2type.js" />
+    <Content Include="vendor\jquery\src\var\concat.js" />
+    <Content Include="vendor\jquery\src\var\hasOwn.js" />
+    <Content Include="vendor\jquery\src\var\indexOf.js" />
+    <Content Include="vendor\jquery\src\var\pnum.js" />
+    <Content Include="vendor\jquery\src\var\push.js" />
+    <Content Include="vendor\jquery\src\var\rnotwhite.js" />
+    <Content Include="vendor\jquery\src\var\slice.js" />
+    <Content Include="vendor\jquery\src\var\strundefined.js" />
+    <Content Include="vendor\jquery\src\var\support.js" />
+    <Content Include="vendor\jquery\src\var\toString.js" />
+    <Content Include="vendor\jquery\src\wrap.js" />
+    <Content Include="vendor\lazy.js\autodoc\handlers.js" />
+    <Content Include="vendor\lazy.js\experimental\lazy.es6.js" />
+    <Content Include="vendor\lazy.js\experimental\lazy.json.js" />
+    <Content Include="vendor\lazy.js\lazy.browser.js" />
+    <Content Include="vendor\lazy.js\lazy.js" />
+    <Content Include="vendor\lazy.js\lazy.min.js" />
+    <Content Include="vendor\lazy.js\lazy.node.js" />
+    <Content Include="vendor\lazy.js\LICENSE.txt" />
+    <Content Include="vendor\lazy.js\perf\perf_race.js" />
+    <Content Include="vendor\sinon\.gitignore" />
+    <Content Include="vendor\sinon\Changelog.txt" />
+    <Content Include="vendor\sinon\lib\sinon.js" />
+    <Content Include="vendor\sinon\lib\sinon\assert.js" />
+    <Content Include="vendor\sinon\lib\sinon\behavior.js" />
+    <Content Include="vendor\sinon\lib\sinon\call.js" />
+    <Content Include="vendor\sinon\lib\sinon\collection.js" />
+    <Content Include="vendor\sinon\lib\sinon\extend.js" />
+    <Content Include="vendor\sinon\lib\sinon\format.js" />
+    <Content Include="vendor\sinon\lib\sinon\log_error.js" />
+    <Content Include="vendor\sinon\lib\sinon\match.js" />
+    <Content Include="vendor\sinon\lib\sinon\mock.js" />
+    <Content Include="vendor\sinon\lib\sinon\sandbox.js" />
+    <Content Include="vendor\sinon\lib\sinon\spy.js" />
+    <Content Include="vendor\sinon\lib\sinon\stub.js" />
+    <Content Include="vendor\sinon\lib\sinon\test.js" />
+    <Content Include="vendor\sinon\lib\sinon\test_case.js" />
+    <Content Include="vendor\sinon\lib\sinon\times_in_words.js" />
+    <Content Include="vendor\sinon\lib\sinon\typeOf.js" />
+    <Content Include="vendor\sinon\lib\sinon\util\core.js" />
+    <Content Include="vendor\sinon\lib\sinon\util\event.js" />
+    <Content Include="vendor\sinon\lib\sinon\util\fake_server.js" />
+    <Content Include="vendor\sinon\lib\sinon\util\fake_server_with_clock.js" />
+    <Content Include="vendor\sinon\lib\sinon\util\fake_timers.js" />
+    <Content Include="vendor\sinon\lib\sinon\util\fake_xdomain_request.js" />
+    <Content Include="vendor\sinon\lib\sinon\util\fake_xml_http_request.js" />
+    <Content Include="vendor\sinon\lib\sinon\util\timers_ie.js" />
+    <Content Include="vendor\sinon\lib\sinon\util\xdr_ie.js" />
+    <Content Include="vendor\sinon\lib\sinon\util\xhr_ie.js" />
+    <Content Include="vendor\sinon\test\buster-test.css" />
+    <Content Include="vendor\sinon\test\node\run.js" />
+    <Content Include="vendor\sinon\test\phantom\run-tests-in-phantom.js" />
+    <Content Include="vendor\sinon\test\resources\xhr_target.txt" />
+    <Content Include="vendor\sinon\test\runner.js" />
+    <Content Include="vendor\sinon\test\server-clock.html" />
+    <Content Include="vendor\sinon\test\sinon-dist.html" />
+    <Content Include="vendor\sinon\test\sinon.html" />
+    <Content Include="vendor\sinon\test\sinon\assert_test.js" />
+    <Content Include="vendor\sinon\test\sinon\call_test.js" />
+    <Content Include="vendor\sinon\test\sinon\collection_test.js" />
+    <Content Include="vendor\sinon\test\sinon\extend_test.js" />
+    <Content Include="vendor\sinon\test\sinon\format_test.js" />
+    <Content Include="vendor\sinon\test\sinon\issues\issues.js" />
+    <Content Include="vendor\sinon\test\sinon\log_error_test.js" />
+    <Content Include="vendor\sinon\test\sinon\match_test.js" />
+    <Content Include="vendor\sinon\test\sinon\mock_test.js" />
+    <Content Include="vendor\sinon\test\sinon\sandbox_test.js" />
+    <Content Include="vendor\sinon\test\sinon\spy_test.js" />
+    <Content Include="vendor\sinon\test\sinon\stub_test.js" />
+    <Content Include="vendor\sinon\test\sinon\test_case_test.js" />
+    <Content Include="vendor\sinon\test\sinon\test_test.js" />
+    <Content Include="vendor\sinon\test\sinon\times_in_words_test.js" />
+    <Content Include="vendor\sinon\test\sinon\typeOf_test.js" />
+    <Content Include="vendor\sinon\test\sinon\util\event_test.js" />
+    <Content Include="vendor\sinon\test\sinon\util\fake_server_test.js" />
+    <Content Include="vendor\sinon\test\sinon\util\fake_server_with_clock_test.js" />
+    <Content Include="vendor\sinon\test\sinon\util\fake_timers_test.js" />
+    <Content Include="vendor\sinon\test\sinon\util\fake_xdomain_request_test.js" />
+    <Content Include="vendor\sinon\test\sinon\util\fake_xml_http_request_test.js" />
+    <Content Include="vendor\sinon\test\sinon_test.js" />
+    <Content Include="vendor\sinon\test\timers.html" />
+    <Content Include="vendor\spin.js\.gitignore" />
+    <Content Include="vendor\spin.js\jquery.spin.js" />
+    <Content Include="vendor\spin.js\LICENSE.txt" />
+    <Content Include="vendor\spin.js\spin.js" />
+    <Content Include="vendor\ui-utils\ui-utils-ieshiv.js" />
+    <Content Include="vendor\ui-utils\ui-utils-ieshiv.min.js" />
+    <Content Include="vendor\ui-utils\ui-utils.js" />
+    <Content Include="vendor\ui-utils\ui-utils.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="build\js\" />
+    <Folder Include="gulp\" />
+    <Folder Include="src\test-helpers\mocks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="bower.json" />
+    <Content Include="package.json" />
+    <Content Include=".bowerrc" />
+    <None Include="Project_Readme.html" />
+    <Content Include="vendor\jquery\.bower.json" />
+    <Content Include="vendor\jquery\bower.json" />
+    <Content Include="vendor\jquery\dist\jquery.min.map" />
+    <Content Include="vendor\jquery\src\sizzle\dist\sizzle.min.map" />
+    <Content Include="vendor\amplify\.bower.json" />
+    <Content Include="vendor\amplify\bower.json" />
+    <Content Include="vendor\amplify\docs\amplify.core.md" />
+    <Content Include="vendor\amplify\docs\amplify.request.md" />
+    <Content Include="vendor\amplify\docs\amplify.store.md" />
+    <Content Include="vendor\angular-animate\.bower.json" />
+    <Content Include="vendor\angular-animate\angular-animate.min.js.map" />
+    <Content Include="vendor\angular-animate\bower.json" />
+    <Content Include="vendor\angular-animate\package.json" />
+    <Content Include="vendor\angular-animate\README.md" />
+    <Content Include="vendor\angular-aria\.bower.json" />
+    <Content Include="vendor\angular-aria\angular-aria.min.js.map" />
+    <Content Include="vendor\angular-aria\bower.json" />
+    <Content Include="vendor\angular-aria\package.json" />
+    <Content Include="vendor\angular-aria\README.md" />
+    <Content Include="vendor\angular-bootstrap\.bower.json" />
+    <Content Include="vendor\angular-bootstrap\bower.json" />
+    <Content Include="vendor\angular-cookies\.bower.json" />
+    <Content Include="vendor\angular-cookies\angular-cookies.min.js.map" />
+    <Content Include="vendor\angular-cookies\bower.json" />
+    <Content Include="vendor\angular-cookies\package.json" />
+    <Content Include="vendor\angular-cookies\README.md" />
+    <Content Include="vendor\angular-messages\.bower.json" />
+    <Content Include="vendor\angular-messages\angular-messages.min.js.map" />
+    <Content Include="vendor\angular-messages\bower.json" />
+    <Content Include="vendor\angular-messages\package.json" />
+    <Content Include="vendor\angular-messages\README.md" />
+    <Content Include="vendor\angular-mocks\.bower.json" />
+    <Content Include="vendor\angular-mocks\bower.json" />
+    <Content Include="vendor\angular-mocks\package.json" />
+    <Content Include="vendor\angular-mocks\README.md" />
+    <Content Include="vendor\angular-sanitize\.bower.json" />
+    <Content Include="vendor\angular-sanitize\angular-sanitize.min.js.map" />
+    <Content Include="vendor\angular-sanitize\bower.json" />
+    <Content Include="vendor\angular-sanitize\package.json" />
+    <Content Include="vendor\angular-sanitize\README.md" />
+    <Content Include="vendor\angular-spinner\.bower.json" />
+    <Content Include="vendor\angular-spinner\.editorconfig" />
+    <Content Include="vendor\angular-spinner\.jshintrc" />
+    <Content Include="vendor\angular-spinner\.npmignore" />
+    <Content Include="vendor\angular-spinner\.travis.yml" />
+    <Content Include="vendor\angular-spinner\angular-spinner.min.js.map" />
+    <Content Include="vendor\angular-spinner\bower.json" />
+    <Content Include="vendor\angular-spinner\CHANGELOG.md" />
+    <Content Include="vendor\angular-spinner\package.json" />
+    <Content Include="vendor\angular-spinner\README.md" />
+    <Content Include="vendor\angular-touch\.bower.json" />
+    <Content Include="vendor\angular-touch\angular-touch.min.js.map" />
+    <Content Include="vendor\angular-touch\bower.json" />
+    <Content Include="vendor\angular-touch\package.json" />
+    <Content Include="vendor\angular-touch\README.md" />
+    <Content Include="vendor\angular-ui-router\.bower.json" />
+    <Content Include="vendor\angular-ui-router\bower.json" />
+    <Content Include="vendor\angular-ui-router\CHANGELOG.md" />
+    <Content Include="vendor\angular-ui-router\CONTRIBUTING.md" />
+    <Content Include="vendor\angular-ui-router\LICENSE" />
+    <Content Include="vendor\angular-ui-router\README.md" />
+    <Content Include="vendor\angular-ui\.bower.json" />
+    <Content Include="vendor\angular-ui\.travis.yml" />
+    <Content Include="vendor\angular-ui\CHANGELOG.md" />
+    <Content Include="vendor\angular-ui\common\ieshiv\README.md" />
+    <Content Include="vendor\angular-ui\common\stylesheets\angular-ui.less" />
+    <Content Include="vendor\angular-ui\common\stylesheets\mixins.less" />
+    <Content Include="vendor\angular-ui\LICENSE" />
+    <Content Include="vendor\angular-ui\modules\directives\calendar\dependencies.json" />
+    <Content Include="vendor\angular-ui\modules\directives\codemirror\dependencies.json" />
+    <Content Include="vendor\angular-ui\modules\directives\currency\README.md" />
+    <Content Include="vendor\angular-ui\modules\directives\currency\stylesheets\currency.less" />
+    <Content Include="vendor\angular-ui\modules\directives\date\dependencies.json" />
+    <Content Include="vendor\angular-ui\modules\directives\date\README.md" />
+    <Content Include="vendor\angular-ui\modules\directives\jq\README.md" />
+    <Content Include="vendor\angular-ui\modules\directives\mask\dependencies.json" />
+    <Content Include="vendor\angular-ui\modules\directives\reset\stylesheets\reset.less" />
+    <Content Include="vendor\angular-ui\modules\directives\select2\dependencies.json" />
+    <Content Include="vendor\angular-ui\modules\directives\sortable\REDME.md" />
+    <Content Include="vendor\angular-ui\modules\directives\tinymce\dependencies.json" />
+    <Content Include="vendor\angular-ui\modules\filters\highlight\highlight.less" />
+    <Content Include="vendor\angular-ui\package.json" />
+    <Content Include="vendor\angular-ui\README.md" />
+    <Content Include="vendor\angular-ui\templates\dependencies.json" />
+    <Content Include="vendor\angular-ui\templates\README.md" />
+    <Content Include="vendor\angular-ui\templates\stylesheets\template.less" />
+    <Content Include="vendor\angular-ui\test\lib\calendar\calendar.js.min" />
+    <Content Include="vendor\angular\.bower.json" />
+    <Content Include="vendor\angular\angular.min.js.gzip" />
+    <Content Include="vendor\angular\angular.min.js.map" />
+    <Content Include="vendor\angular\bower.json" />
+    <Content Include="vendor\angular\package.json" />
+    <Content Include="vendor\angular\README.md" />
+    <Content Include="vendor\bardjs\.bower.json" />
+    <Content Include="vendor\bardjs\bower.json" />
+    <Content Include="vendor\bardjs\CHANGELOG.md" />
+    <Content Include="vendor\bardjs\LICENSE" />
+    <Content Include="vendor\bardjs\package.json" />
+    <Content Include="vendor\bardjs\README.md" />
+    <Content Include="vendor\bardjs\snippets\brackets-testing-snippets.yaml" />
+    <Content Include="vendor\bootstrap\.bower.json" />
+    <Content Include="vendor\bootstrap\bower.json" />
+    <Content Include="vendor\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <Content Include="vendor\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="vendor\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="vendor\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="vendor\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="vendor\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="vendor\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="vendor\bootstrap\grunt\.jshintrc" />
+    <Content Include="vendor\bootstrap\grunt\configBridge.json" />
+    <Content Include="vendor\bootstrap\grunt\sauce_browsers.yml" />
+    <Content Include="vendor\bootstrap\js\.jscsrc" />
+    <Content Include="vendor\bootstrap\js\.jshintrc" />
+    <Content Include="vendor\bootstrap\less\.csscomb.json" />
+    <Content Include="vendor\bootstrap\less\.csslintrc" />
+    <Content Include="vendor\bootstrap\less\alerts.less" />
+    <Content Include="vendor\bootstrap\less\badges.less" />
+    <Content Include="vendor\bootstrap\less\bootstrap.less" />
+    <Content Include="vendor\bootstrap\less\breadcrumbs.less" />
+    <Content Include="vendor\bootstrap\less\button-groups.less" />
+    <Content Include="vendor\bootstrap\less\buttons.less" />
+    <Content Include="vendor\bootstrap\less\carousel.less" />
+    <Content Include="vendor\bootstrap\less\close.less" />
+    <Content Include="vendor\bootstrap\less\code.less" />
+    <Content Include="vendor\bootstrap\less\component-animations.less" />
+    <Content Include="vendor\bootstrap\less\dropdowns.less" />
+    <Content Include="vendor\bootstrap\less\forms.less" />
+    <Content Include="vendor\bootstrap\less\glyphicons.less" />
+    <Content Include="vendor\bootstrap\less\grid.less" />
+    <Content Include="vendor\bootstrap\less\input-groups.less" />
+    <Content Include="vendor\bootstrap\less\jumbotron.less" />
+    <Content Include="vendor\bootstrap\less\labels.less" />
+    <Content Include="vendor\bootstrap\less\list-group.less" />
+    <Content Include="vendor\bootstrap\less\media.less" />
+    <Content Include="vendor\bootstrap\less\mixins.less" />
+    <Content Include="vendor\bootstrap\less\mixins\alerts.less" />
+    <Content Include="vendor\bootstrap\less\mixins\background-variant.less" />
+    <Content Include="vendor\bootstrap\less\mixins\border-radius.less" />
+    <Content Include="vendor\bootstrap\less\mixins\buttons.less" />
+    <Content Include="vendor\bootstrap\less\mixins\center-block.less" />
+    <Content Include="vendor\bootstrap\less\mixins\clearfix.less" />
+    <Content Include="vendor\bootstrap\less\mixins\forms.less" />
+    <Content Include="vendor\bootstrap\less\mixins\gradients.less" />
+    <Content Include="vendor\bootstrap\less\mixins\grid-framework.less" />
+    <Content Include="vendor\bootstrap\less\mixins\grid.less" />
+    <Content Include="vendor\bootstrap\less\mixins\hide-text.less" />
+    <Content Include="vendor\bootstrap\less\mixins\image.less" />
+    <Content Include="vendor\bootstrap\less\mixins\labels.less" />
+    <Content Include="vendor\bootstrap\less\mixins\list-group.less" />
+    <Content Include="vendor\bootstrap\less\mixins\nav-divider.less" />
+    <Content Include="vendor\bootstrap\less\mixins\nav-vertical-align.less" />
+    <Content Include="vendor\bootstrap\less\mixins\opacity.less" />
+    <Content Include="vendor\bootstrap\less\mixins\pagination.less" />
+    <Content Include="vendor\bootstrap\less\mixins\panels.less" />
+    <Content Include="vendor\bootstrap\less\mixins\progress-bar.less" />
+    <Content Include="vendor\bootstrap\less\mixins\reset-filter.less" />
+    <Content Include="vendor\bootstrap\less\mixins\resize.less" />
+    <Content Include="vendor\bootstrap\less\mixins\responsive-visibility.less" />
+    <Content Include="vendor\bootstrap\less\mixins\size.less" />
+    <Content Include="vendor\bootstrap\less\mixins\tab-focus.less" />
+    <Content Include="vendor\bootstrap\less\mixins\table-row.less" />
+    <Content Include="vendor\bootstrap\less\mixins\text-emphasis.less" />
+    <Content Include="vendor\bootstrap\less\mixins\text-overflow.less" />
+    <Content Include="vendor\bootstrap\less\mixins\vendor-prefixes.less" />
+    <Content Include="vendor\bootstrap\less\modals.less" />
+    <Content Include="vendor\bootstrap\less\navbar.less" />
+    <Content Include="vendor\bootstrap\less\navs.less" />
+    <Content Include="vendor\bootstrap\less\normalize.less" />
+    <Content Include="vendor\bootstrap\less\pager.less" />
+    <Content Include="vendor\bootstrap\less\pagination.less" />
+    <Content Include="vendor\bootstrap\less\panels.less" />
+    <Content Include="vendor\bootstrap\less\popovers.less" />
+    <Content Include="vendor\bootstrap\less\print.less" />
+    <Content Include="vendor\bootstrap\less\progress-bars.less" />
+    <Content Include="vendor\bootstrap\less\responsive-embed.less" />
+    <Content Include="vendor\bootstrap\less\responsive-utilities.less" />
+    <Content Include="vendor\bootstrap\less\scaffolding.less" />
+    <Content Include="vendor\bootstrap\less\tables.less" />
+    <Content Include="vendor\bootstrap\less\theme.less" />
+    <Content Include="vendor\bootstrap\less\thumbnails.less" />
+    <Content Include="vendor\bootstrap\less\tooltip.less" />
+    <Content Include="vendor\bootstrap\less\type.less" />
+    <Content Include="vendor\bootstrap\less\utilities.less" />
+    <Content Include="vendor\bootstrap\less\variables.less" />
+    <Content Include="vendor\bootstrap\less\wells.less" />
+    <Content Include="vendor\bootstrap\LICENSE" />
+    <Content Include="vendor\bootstrap\package.json" />
+    <Content Include="vendor\bootstrap\README.md" />
+    <Content Include="vendor\fontawesome\.bower.json" />
+    <Content Include="vendor\fontawesome\.npmignore" />
+    <Content Include="vendor\fontawesome\bower.json" />
+    <Content Include="vendor\fontawesome\css\font-awesome.css.map" />
+    <Content Include="vendor\fontawesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="vendor\fontawesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="vendor\fontawesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="vendor\fontawesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="vendor\fontawesome\fonts\FontAwesome.otf" />
+    <Content Include="vendor\fontawesome\less\animated.less" />
+    <Content Include="vendor\fontawesome\less\bordered-pulled.less" />
+    <Content Include="vendor\fontawesome\less\core.less" />
+    <Content Include="vendor\fontawesome\less\fixed-width.less" />
+    <Content Include="vendor\fontawesome\less\font-awesome.less" />
+    <Content Include="vendor\fontawesome\less\icons.less" />
+    <Content Include="vendor\fontawesome\less\larger.less" />
+    <Content Include="vendor\fontawesome\less\list.less" />
+    <Content Include="vendor\fontawesome\less\mixins.less" />
+    <Content Include="vendor\fontawesome\less\path.less" />
+    <Content Include="vendor\fontawesome\less\rotated-flipped.less" />
+    <Content Include="vendor\fontawesome\less\stacked.less" />
+    <Content Include="vendor\fontawesome\less\variables.less" />
+    <Content Include="vendor\fontawesome\scss\font-awesome.scss" />
+    <Content Include="vendor\fontawesome\scss\_animated.scss" />
+    <Content Include="vendor\fontawesome\scss\_bordered-pulled.scss" />
+    <Content Include="vendor\fontawesome\scss\_core.scss" />
+    <Content Include="vendor\fontawesome\scss\_fixed-width.scss" />
+    <Content Include="vendor\fontawesome\scss\_icons.scss" />
+    <Content Include="vendor\fontawesome\scss\_larger.scss" />
+    <Content Include="vendor\fontawesome\scss\_list.scss" />
+    <Content Include="vendor\fontawesome\scss\_mixins.scss" />
+    <Content Include="vendor\fontawesome\scss\_path.scss" />
+    <Content Include="vendor\fontawesome\scss\_rotated-flipped.scss" />
+    <Content Include="vendor\fontawesome\scss\_stacked.scss" />
+    <Content Include="vendor\fontawesome\scss\_variables.scss" />
+    <Content Include="vendor\lazy.js\.bower.json" />
+    <Content Include="vendor\lazy.js\autodoc\index.html.mustache" />
+    <Content Include="vendor\lazy.js\autodoc\sequenceEquality.js.mustache" />
+    <Content Include="vendor\lazy.js\bower.json" />
+    <Content Include="vendor\lazy.js\CHANGES.md" />
+    <Content Include="vendor\lazy.js\component.json" />
+    <Content Include="vendor\lazy.js\Gemfile" />
+    <Content Include="vendor\lazy.js\package.json" />
+    <Content Include="vendor\lazy.js\Rakefile" />
+    <Content Include="vendor\lazy.js\README.md" />
+    <Content Include="vendor\lazy.js\README_zh_CN.md" />
+    <Content Include="vendor\sinon\.bower.json" />
+    <Content Include="vendor\sinon\.editorconfig" />
+    <Content Include="vendor\sinon\.jscsrc" />
+    <Content Include="vendor\sinon\.npmignore" />
+    <Content Include="vendor\sinon\.travis.yml" />
+    <Content Include="vendor\sinon\AUTHORS" />
+    <Content Include="vendor\sinon\build" />
+    <Content Include="vendor\sinon\CONTRIBUTING.md" />
+    <Content Include="vendor\sinon\LICENSE" />
+    <Content Include="vendor\sinon\package.json" />
+    <Content Include="vendor\sinon\README.md" />
+    <Content Include="vendor\sinon\release.sh" />
+    <Content Include="vendor\sinon\test\phantom\run.sh" />
+    <Content Include="vendor\spin.js\.bower.json" />
+    <Content Include="vendor\spin.js\.jshintrc" />
+    <Content Include="vendor\spin.js\.npmignore" />
+    <Content Include="vendor\spin.js\bower.json" />
+    <Content Include="vendor\spin.js\README.md" />
+    <Content Include="vendor\ui-utils\.bower.json" />
+    <Content Include="vendor\ui-utils\.travis.yml" />
+    <Content Include="vendor\ui-utils\bower.json" />
+    <Content Include="vendor\ui-utils\CHANGELOG.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="vendor\angular-ui-router\api\angular-ui-router.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>25929</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44303/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <title>Spec Runner</title>
+
+    <style>
+        body {
+            font: 20px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+            padding-left: 20px;
+        }
+    </style>
+
+    <!--BEWARE of using any app styles as @media can screw up tests -->
+
+    <link rel="stylesheet" href="/node_modules/mocha/mocha.css">
+
+</head>
+<body>
+
+<h1><a href="specs.html">Spec Runner</a></h1>
+<p><strong>Make sure the REMOTE server is running</strong><br/>
+    Click on a <em>description title</em> to narrow the scope to just its specs
+    (see "<a href="http://mochajs.github.io/mocha/#grep-option" target="_blank" title="MochaJS grep option">
+        ?grep</a>" in address bar).<br/>
+    Click on a <em>spec title</em> to see the test implementation.<br/>
+    Click on <em>page title</em> to start over.
+</p>
+
+<div id="mocha"></div>
+
+<!-- inject:testlibraries:js -->
+<script src="/node_modules/mocha/mocha.js"></script>
+<script src="/node_modules/chai/chai.js"></script>
+<script src="/node_modules/mocha-clean/index.js"></script>
+<script src="/node_modules/sinon-chai/lib/sinon-chai.js"></script>
+<!-- endinject -->
+
+<script>
+    expect = chai.expect;
+    AssertionError = chai.AssertionError;
+    mocha.setup('bdd');
+    mocha.traceIgnores = ['mocha.js', 'chai.js', 'angular.js'];
+</script>
+
+<!-- bower:js -->
+<script src="../vendor/jquery/dist/jquery.js"></script>
+<script src="../vendor/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../vendor/amplify/lib/amplify.js"></script>
+<script src="../vendor/angular/angular.js"></script>
+<script src="../vendor/angular-animate/angular-animate.js"></script>
+<script src="../vendor/angular-aria/angular-aria.js"></script>
+<script src="../vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../vendor/angular-cookies/angular-cookies.js"></script>
+<script src="../vendor/angular-messages/angular-messages.js"></script>
+<script src="../vendor/angular-mocks/angular-mocks.js"></script>
+<script src="../vendor/angular-sanitize/angular-sanitize.js"></script>
+<script src="../vendor/spin.js/spin.js"></script>
+<script src="../vendor/angular-spinner/angular-spinner.js"></script>
+<script src="../vendor/angular-touch/angular-touch.js"></script>
+<script src="../vendor/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="../vendor/sinon/index.js"></script>
+<script src="../vendor/bardjs/dist/bard.js"></script>
+<script src="../vendor/bardjs/dist/bard-ngRouteTester.js"></script>
+<script src="../vendor/lazy.js/lazy.js"></script>
+<script src="../vendor/ui-utils/ui-utils.js"></script>
+<script src="../vendor/alertifyjs/dist/js/alertify.js"></script>
+<script src="../vendor/momentjs/moment.js"></script>
+<!-- endbower -->
+
+<!-- inject:js -->
+<script src="/src/app/app.module.js"></script>
+<script src="/src/app/blocks/exception/exception.module.js"></script>
+<script src="/src/app/blocks/logger/logger.module.js"></script>
+<script src="/src/app/blocks/router/router.module.js"></script>
+<script src="/src/app/core/core.module.js"></script>
+<script src="/src/app/external/external.module.js"></script>
+<script src="/src/app/home/home.module.js"></script>
+<script src="/src/app/blocks/exception/exception-handler.provider.js"></script>
+<script src="/src/app/blocks/exception/exception.service.js"></script>
+<script src="/src/app/blocks/logger/logger.service.js"></script>
+<script src="/src/app/blocks/router/router.provider.js"></script>
+<script src="/src/app/core/directives/menu.directive.js"></script>
+<script src="/src/app/core/services/api.service.js"></script>
+<script src="/src/app/external/external.constants.js"></script>
+<script src="/src/app/home/controllers/home.controller.js"></script>
+<script src="/src/app/home/home.routes.js"></script>
+<script src="/src/app/home/services/home.domain.service.js"></script>
+<!-- endinject -->
+
+<!-- inject:spechelpers:js -->
+<script src="/src/test-helpers/bind-polyfill.js"></script>
+<script src="/src/test-helpers/mocks/content.mock.js"></script>
+<!-- endinject -->
+
+<!-- inject:specs:js -->
+<script src="/src/app/blocks/exception/exception-handler.provider.spec.js"></script>
+<script src="/src/app/core/services/api.service.spec.js"></script>
+<script src="/src/app/home/controllers/home.controller.spec.js"></script>
+<script src="/src/app/home/home.routes.spec.js"></script>
+<script src="/src/app/home/services/home.domain.service.spec.js"></script>
+<!-- endinject -->
+
+<!-- inject:templates:js -->
+<script src="/.tmp/templates.js"></script>
+<!-- endinject -->
+
+<script>
+    mocha.run();
+</script>
+
+</body>
+</html>
